@@ -1,7 +1,7 @@
 {
     "name":"Helpful Browser Senko-San",
     "description": "Senko-san has now become a chromebook browser app! Rejoice as she helps you browse your degenerate websites.",
-    "version":"0.31",
+    "version":"0.32",
     "manifest_version":2,
     "permissions": [
         "webview"    
