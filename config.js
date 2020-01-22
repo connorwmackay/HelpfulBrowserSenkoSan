@@ -28,11 +28,19 @@ chanBtn.onclick=function(){goLink("https://www.4chan.org")};
 // START SEARCH FUNCTIONALITY
 
 function liberalLinks(link) {
-    let start = "https://";
-    let startw = "www.";
+    const start = "https://";
+    const startw = "www.";
     let linkSt = "";
     let linkStw = "";
-    
+    const searchEngine = "https://www.google.com/search?q=";
+    let isDomain = false;
+
+    for (let i=0; i < link.length; i++) {
+        if (i == '.') {
+            isDomain = true;
+        }
+    }
+
     for (let i=0; i < 8; i++) {
         linkSt += link[i];
     }
@@ -41,15 +49,20 @@ function liberalLinks(link) {
         linkStw += link[i];
     }
     
-    if (start !== linkSt) {
-        if (startw === linkStw) {
-            return start + startw + link;
+    if (isDomain) {
+        if (start !== linkSt) {
+            if (startw === linkStw) {
+                return start + startw + link;
+            }
+            return start + link;
+            
+        }else{
+            return link;   
         }
-        return start + link;
-        
     }else{
-        return link;   
+        return searchEngine + link;
     }
+    
 }
 
 function search() {
