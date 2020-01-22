@@ -1,5 +1,17 @@
 button {
     background-color: orange;
     color: white;
-    padding: 0.5em;
+    padding: 5px;
+    border-style: none;
+}
+
+#searchBar {
+    padding: 0.4em;
+    height: 2%;
+    position: absolute; 
+    width: 80%; 
+    margin-left: 2%;
+    margin-bottom: 1%;
+    border-color: orange;
+    border: 0.1em orange solid;
 }
