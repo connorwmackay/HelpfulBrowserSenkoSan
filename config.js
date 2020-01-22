@@ -5,9 +5,6 @@ let webviewConfig = {
     "home":"https://www.google.co.uk",
 };
 
-//webview.src = webviewConfig["home"];
-//webview.style = webviewConfig["size"];
-
 let searchBar = document.getElementById("searchBar");
 
 function goHome() {
@@ -17,7 +14,7 @@ function goHome() {
 
 function goLink(link) {
     webview.src = link;
-    searchBar.value = "";
+    searchBar.value = webview.src;
 }
 
 
@@ -55,12 +52,13 @@ function liberalLinks(link) {
     }
 }
 
-function search(link) {
-    goLink(liberalLinks(link));
-    searchBar.value = "";
+function search() {
+    let key = event.which;
+    if (key === 13){
+        goLink(liberalLinks(searchBar.value));
+    }
 }
 
-let searchBtn = document.getElementById("searchBtn");
-searchBtn.onclick=function(){search(searchBar.value)};
+searchBar.addEventListener("keyup", search);
 
 // END SEARCH FUNCTIONALITY
