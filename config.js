@@ -1,12 +1,12 @@
-let webview = document.createElement("webview");
+let webview = document.getElementById("webview");
+
 
 let webviewConfig = {
     "home":"https://www.google.co.uk",
-    "size":"position: absolute; width: 99%; height: 97%;"
 };
 
-webview.src = webviewConfig["home"];
-webview.style = webviewConfig["size"];
+//webview.src = webviewConfig["home"];
+//webview.style = webviewConfig["size"];
 
 let searchBar = document.getElementById("searchBar");
 
@@ -64,5 +64,3 @@ let searchBtn = document.getElementById("searchBtn");
 searchBtn.onclick=function(){search(searchBar.value)};
 
 // END SEARCH FUNCTIONALITY
-
-document.body.appendChild(webview);
