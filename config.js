@@ -2,7 +2,7 @@ let webview = document.createElement("webview");
 
 let webviewConfig = {
     "home":"https://www.google.co.uk",
-    "size":"width: 1360px; height: 660px;"
+    "size":"position: absolute; width: 99%; height: 97%;"
 };
 
 webview.src = webviewConfig["home"];
@@ -72,7 +72,9 @@ searchBtn.innerHTML = "Search";
 
 // END SEARCH FUNCTIONALITY
 
-const elements = [homeBtn, redditBtn, chanBtn, searchBar, searchBtn, webview];
+let spaceBr = document.createElement("br");
+
+const elements = [homeBtn, redditBtn, chanBtn, searchBar, searchBtn, spaceBr, webview];
 for (let i=0; i < elements.length; i++) {
     document.body.appendChild(elements[i]);
 }
