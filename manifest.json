@@ -1,0 +1,14 @@
+{
+    "name":"Subsystem: Browser",
+    "description": "Browser for the susbsystem",
+    "version":"0.2",
+    "manifest_version":2,
+    "permissions": [
+        "webview"    
+    ],
+    "app": {
+        "background": {
+            "scripts": ["browser.js"]
+        }
+    }
+}
