@@ -60,14 +60,19 @@ function liberalLinks(link) {
 }
 
 function search() {
+    
+}
+
+searchBar.addEventListener("keyup", function() {
     let key = event.which;
     if (key === 13){
         goLink(liberalLinks(searchBar.value));
     }
-}
-
-searchBar.addEventListener("keyup", search);
-
-searchBar.value = webview.src;
+});
+webview.addEventListener("loadstop",function() {
+    if (searchBar.value !== webview.src) {
+        searchBar.value = webview.src;
+    }
+});
 
 // END SEARCH FUNCTIONALITY
