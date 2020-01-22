@@ -61,4 +61,6 @@ function search() {
 
 searchBar.addEventListener("keyup", search);
 
+searchBar.value = webview.src;
+
 // END SEARCH FUNCTIONALITY
