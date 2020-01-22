@@ -1,6 +1,6 @@
 {
-    "name":"Subsystem: Browser",
-    "description": "Browser for the susbsystem",
+    "name":"Helpful Browser Senko-San",
+    "description": "Senko-san has now become a chromebook browser app! Rejoice as she helps you browse your degenerate websites.",
     "version":"0.2",
     "manifest_version":2,
     "permissions": [
