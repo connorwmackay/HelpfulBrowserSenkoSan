@@ -8,7 +8,7 @@ let webviewConfig = {
 webview.src = webviewConfig["home"];
 webview.style = webviewConfig["size"];
 
-let searchBar = document.createElement("input");
+let searchBar = document.getElementById("searchBar");
 
 function goHome() {
     webview.src = webviewConfig["home"];
@@ -21,18 +21,12 @@ function goLink(link) {
 }
 
 
-let homeBtn = document.createElement("button");
-let redditBtn = document.createElement("button");
-let chanBtn = document.createElement("button");
+let homeBtn = document.getElementById("homeBtn");
+let redditBtn = document.getElementById("redditBtn");
+let chanBtn = document.getElementById("chanBtn");
 homeBtn.onclick=function(){goHome()};
 redditBtn.onclick=function(){goLink("https://www.reddit.com")};
 chanBtn.onclick=function(){goLink("https://www.4chan.org")};
-homeBtn.innerHTML = "Home";
-redditBtn.innerHTML = "Reddit";
-chanBtn.innerHTML = "4Chan";
-
-searchBar.type="text";
-searchBar.placeholder="Type a url";
 
 // START SEARCH FUNCTIONALITY
 
@@ -66,15 +60,9 @@ function search(link) {
     searchBar.value = "";
 }
 
-let searchBtn = document.createElement("button");
+let searchBtn = document.getElementById("searchBtn");
 searchBtn.onclick=function(){search(searchBar.value)};
-searchBtn.innerHTML = "Search";
 
 // END SEARCH FUNCTIONALITY
 
-let spaceBr = document.createElement("br");
-
-const elements = [homeBtn, redditBtn, chanBtn, searchBar, searchBtn, spaceBr, webview];
-for (let i=0; i < elements.length; i++) {
-    document.body.appendChild(elements[i]);
-}
+document.body.appendChild(webview);
