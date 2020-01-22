@@ -19,11 +19,13 @@ function goLink(link) {
 
 
 let homeBtn = document.getElementById("homeBtn");
-let redditBtn = document.getElementById("redditBtn");
-let chanBtn = document.getElementById("chanBtn");
+let backBtn = document.getElementById("backBtn");
+let reloadBtn = document.getElementById("reloadBtn");
+let forwardBtn = document.getElementById("forwardBtn");
 homeBtn.onclick=function(){goHome()};
-redditBtn.onclick=function(){goLink("https://www.reddit.com")};
-chanBtn.onclick=function(){goLink("https://www.4chan.org")};
+backBtn.onclick=function(){webview.back()};
+forwardBtn.onclick=function(){webview.forward();};
+reloadBtn.onclick=function(){webview.reload();};
 
 // START SEARCH FUNCTIONALITY
 
@@ -33,7 +35,7 @@ function liberalLinks(link) {
     let linkSt = "";
     let linkStw = "";
     const searchEngine = "https://www.google.com/search?q=";
-    
+
     for (let i=0; i < 8; i++) {
         linkSt += link[i];
     }
