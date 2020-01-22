@@ -33,14 +33,7 @@ function liberalLinks(link) {
     let linkSt = "";
     let linkStw = "";
     const searchEngine = "https://www.google.com/search?q=";
-    let isDomain = false;
-
-    for (let i=0; i < link.length; i++) {
-        if (i == '.') {
-            isDomain = true;
-        }
-    }
-
+    
     for (let i=0; i < 8; i++) {
         linkSt += link[i];
     }
@@ -49,20 +42,19 @@ function liberalLinks(link) {
         linkStw += link[i];
     }
     
-    if (isDomain) {
-        if (start !== linkSt) {
-            if (startw === linkStw) {
-                return start + startw + link;
-            }
-            return start + link;
-            
-        }else{
-            return link;   
+    if (start !== linkSt) {
+        if (startw === linkStw) {
+            return start + startw + link;
         }
+        if (link.includes('.') === true) {
+            return start + link;
+        }else{
+            return searchEngine + link;
+        }
+            
     }else{
-        return searchEngine + link;
+            return link;
     }
-    
 }
 
 function search() {
