@@ -59,10 +59,6 @@ function liberalLinks(link) {
     }
 }
 
-function search() {
-    
-}
-
 searchBar.addEventListener("keyup", function() {
     let key = event.which;
     if (key === 13){
@@ -76,3 +72,21 @@ webview.addEventListener("loadstop",function() {
 });
 
 // END SEARCH FUNCTIONALITY
+
+webview.addEventListener("permissionrequest", function(e) {
+    if (e.permission === "fullscreen") {
+	e.request.allow();
+    }
+});
+
+// START LOADSCREEN FUNCTIONALITY
+
+webview.addEventListener("loadstart", function() {
+	document.getElementById("loadImg").src="senkoLoading.gif"; 
+});
+
+webview.addEventListener("loadstop", function() {
+    document.getElementById("loadImg").src="";
+});
+
+// END LOADSCREEN FUNCTIONALITY
