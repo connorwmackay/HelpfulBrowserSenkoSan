@@ -20,14 +20,3 @@ webview.addEventListener("permissionrequest", function(e) {
     }
 });
 
-// START LOADSCREEN FUNCTIONALITY
-
-webview.addEventListener("loadstart", function() {
-	document.getElementById("loadImg").src="senkoLoading.gif"; 
-});
-
-webview.addEventListener("loadstop", function() {
-    document.getElementById("loadImg").src="";
-});
-
-// END LOADSCREEN FUNCTIONALITY

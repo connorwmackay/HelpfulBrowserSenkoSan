@@ -12,5 +12,5 @@
             "scripts": ["browser.js"]
         }
     },
-    "icons":{"128":"senko.png"}
+    "icons":{"128":"images/senko.png"}
 }
