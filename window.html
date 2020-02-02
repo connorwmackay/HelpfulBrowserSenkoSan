@@ -3,9 +3,10 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="master.css" type="text/css">
-	<script src="urlManager.js" async></script>
-	<script src="config.js" async></script>
-	<script src="loadscreen.js" async></script>
+		<script src="urlManager.js" async></script>
+		<script src="config.js" async></script>
+		<script src="loadscreen.js" async></script>
+		<script src="cookies.js" async></script>
     </head>
     <body id="body">
         <div id="bar">
@@ -15,7 +16,8 @@
             <button id="reloadBtn"><img src="images/reload.png"></button>
             <input id="searchBar" type="text" placeholder="Search">
         </div>
-	<img id="loadImg" src="" style="z-index: 1; position: absolute; bottom: 0; left: 0;">
-        <webview id="webview" src="https://www.google.co.uk" style="padding-top: 1em; position: absolute; width: 99%; height: 96%;"></webview>
+	<img id="loadImg" src="" style="z-index: 1; position: absolute; bottom: 0; left: 0;" >
+        <webview id="webview" src="https://www.google.co.uk" style="padding-top: 1em; position: absolute; width: 99%; height: 96%;" partition="persist:cookies"></webview>
+
     </body> 
 </html>
