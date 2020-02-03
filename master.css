@@ -19,3 +19,16 @@ button {
     background-color: orange;
     padding: 0.5em;
 }
+
+#box {
+    font-size: 1.5em;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    height: 1.5em;
+    width: 50%;
+    border: 0.2em orange solid;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}

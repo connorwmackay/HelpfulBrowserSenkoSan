@@ -1,8 +1,13 @@
 let searchBar = document.getElementById("searchBar");
+let box = document.getElementById("box");
+let bg = document.getElementById("bg");
 
 function goHome() {
-	webview.src = settings["home"];
-	searchBar.value = "";
+    searchBar.value = "";
+    webview.src="";
+    webview.style.display="none";
+    box.style.display="block";
+    bg.style.display="block";    
 }
 
 
@@ -42,8 +47,25 @@ searchBar.addEventListener("keyup", function() {
 	let returnKey = 13;
 
 	if (keyPressed === returnKey) {
-		updateUrl(fixUrl(searchBar.value));
-	}
+	    updateUrl(fixUrl(searchBar.value));	
+            webview.style.display="block";
+            box.style.display="none";
+            bg.style.display="none";
+            box.value="";    
+        }
+});
+
+box.addEventListener("keyup", function() {
+    let keyPressed = event.which;
+    let returnKey = 13;
+
+    if (keyPressed === returnKey) {
+        updateUrl((settings["searchEngine"] + box.value));
+        webview.style.display="block";
+        box.style.display="none";
+        bg.style.display="none";
+        box.value="";
+    }
 });
 
 webview.addEventListener("loadstop", function() {
