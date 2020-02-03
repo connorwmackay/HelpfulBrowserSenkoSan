@@ -4,6 +4,8 @@ let bg = document.getElementById("bg");
 
 function goHome() {
     searchBar.value = "";
+    box.value="";
+    webview.terminate();
     webview.src="";
     webview.style.display="none";
     box.style.display="block";
@@ -47,7 +49,8 @@ searchBar.addEventListener("keyup", function() {
 	let returnKey = 13;
 
 	if (keyPressed === returnKey) {
-	    updateUrl(fixUrl(searchBar.value));	
+	    webview.src="";
+            updateUrl(fixUrl(searchBar.value));	
             webview.style.display="block";
             box.style.display="none";
             bg.style.display="none";
@@ -60,6 +63,7 @@ box.addEventListener("keyup", function() {
     let returnKey = 13;
 
     if (keyPressed === returnKey) {
+        webview.src="";
         updateUrl((settings["searchEngine"] + box.value));
         webview.style.display="block";
         box.style.display="none";
