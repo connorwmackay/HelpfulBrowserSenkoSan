@@ -5,9 +5,9 @@ let bg = document.getElementById("bg");
 function goHome() {
     searchBar.value = "";
     box.value="";
-    webview.terminate();
-    webview.src="";
-    webview.style.display="none";
+    selectedTab.terminate();
+    selectedTab.src="";
+    selectedTab.style.display="none";
     box.style.display="block";
     bg.style.display="block";    
 }
@@ -41,7 +41,7 @@ function fixUrl(url) {
 }
 
 function updateUrl(url) {
-	webview.src = url;
+	selectedTab.src = url;
 }
 
 searchBar.addEventListener("keyup", function() {
@@ -49,9 +49,9 @@ searchBar.addEventListener("keyup", function() {
 	let returnKey = 13;
 
 	if (keyPressed === returnKey) {
-	    webview.src="";
+	    selectedTab.src="";
             updateUrl(fixUrl(searchBar.value));	
-            webview.style.display="block";
+            selectedTab.style.display="block";
             box.style.display="none";
             bg.style.display="none";
             box.value="";    
@@ -63,17 +63,17 @@ box.addEventListener("keyup", function() {
     let returnKey = 13;
 
     if (keyPressed === returnKey) {
-        webview.src="";
+        selectedTab.src="";
         updateUrl((settings["searchEngine"] + box.value));
-        webview.style.display="block";
+        selectedTab.style.display="block";
         box.style.display="none";
         bg.style.display="none";
         box.value="";
     }
 });
 
-webview.addEventListener("loadstop", function() {
-	if (searchBar.value !== webview.src) {
-		searchBar.value = webview.src;
+selectedTab.addEventListener("loadstop", function() {
+	if (searchBar.value !== selectedTab.src) {
+		searchBar.value = selectedTab.src;
 	}
 });
