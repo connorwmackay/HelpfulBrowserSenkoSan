@@ -2,7 +2,11 @@ let tabs = [];
 let tabBtns = [];
 let tabBar = document.getElementById("tabBar");
 const webviewClass = "tabWebview";
-let selectedTab = null;
+let selectedInd = 0;
+
+if (selectedInd === undefined) {
+    selectedind = 0;
+}
 
 function newWebview() {
     return document.createElement("webview");
@@ -16,7 +20,7 @@ function addTab() {
     tabs.push(newWebview());
     document.body.appendChild(tabs[(tabs.length-1)]);
     updateTabs();
-    selectTab(tabs[(tabs.length-1)]);
+    selectTab(tabs.length-1);
     goHome();
 }
 
@@ -24,11 +28,11 @@ newBtn = newButton();
 tabBar.appendChild(newBtn);
 
 function selectTab(index) {
-    selectedTab = tabs[index];
+    selectedInd = index;
     tabs.forEach(function(tab, index) {
         tab.style.display="none";
     });
-    selectedTab.style.display="block";
+    tabs[selectedInd].style.display="block";
     updateTabs();
 }
 
@@ -60,4 +64,3 @@ function deleteTab(index) {
 }
 
 addTab(newWebview());
-selectTab(0);

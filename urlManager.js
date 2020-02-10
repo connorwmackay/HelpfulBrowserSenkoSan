@@ -5,9 +5,9 @@ let bg = document.getElementById("bg");
 function goHome() {
     searchBar.value = "";
     box.value="";
-    selectedTab.terminate();
-    selectedTab.src="";
-    selectedTab.style.display="none";
+    tabs[selectedInd].terminate();
+    tabs[selectedInd].src="";
+    tabs[selectedInd].style.display="none";
     box.style.display="block";
     bg.style.display="block";    
 }
@@ -41,7 +41,7 @@ function fixUrl(url) {
 }
 
 function updateUrl(url) {
-	selectedTab.src = url;
+	tabs[selectedInd].src = url;
 }
 
 searchBar.addEventListener("keyup", function() {
@@ -49,9 +49,9 @@ searchBar.addEventListener("keyup", function() {
 	let returnKey = 13;
 
 	if (keyPressed === returnKey) {
-	    selectedTab.src="";
+	    tabs[selectedInd].src="";
             updateUrl(fixUrl(searchBar.value));	
-            selectedTab.style.display="block";
+            tabs[selectedInd].style.display="block";
             box.style.display="none";
             bg.style.display="none";
             box.value="";    
@@ -63,17 +63,17 @@ box.addEventListener("keyup", function() {
     let returnKey = 13;
 
     if (keyPressed === returnKey) {
-        selectedTab.src="";
+        tabs[selectedInd].src="";
         updateUrl((settings["searchEngine"] + box.value));
-        selectedTab.style.display="block";
+        tabs[selectedInd].style.display="block";
         box.style.display="none";
         bg.style.display="none";
         box.value="";
     }
 });
 
-selectedTab.addEventListener("loadstop", function() {
-	if (searchBar.value !== selectedTab.src) {
-		searchBar.value = selectedTab.src;
+tabs[selectedInd].addEventListener("loadstop", function() {
+	if (searchBar.value !== tabs[selectedInd].src) {
+		searchBar.value = tabs[selectedInd].src;
 	}
 });
