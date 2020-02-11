@@ -29,6 +29,7 @@ function deleteTab(index) {
         tabs.splice(index, 1);
     }
     updateTabs();
+    selectTab(0);
 }
 
 newBtn = newButton();
@@ -60,7 +61,7 @@ function updateTabs() {
     });
 
     tabBtns.forEach(function(btn, index) {
-        btn.innerHTML = "Tab: " + index; // Set innerHTML to webpage title
+        btn.innerHTML = "Tab: " + index;  
         if (index === selectedInd) {
             btn.className="tabSelected";
         } else {
