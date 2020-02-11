@@ -3,8 +3,8 @@ let tabBtns = [];
 let tabBar = document.getElementById("tabBar");
 const webviewClass = "tabWebview";
 let selectedInd = 0;
-
 let loadscreenImg = document.getElementById("loadImg");
+let conWin = null;
 
 if (selectedInd === undefined) {
     selectedind = 0;
@@ -34,6 +34,10 @@ tabBar.appendChild(newBtn);
 function selectTab(index) {
     selectedInd = index;
     updateTabs();
+    if (searchBar.value !== tabs[selectedInd].src) {
+        searchBar.value = tabs[selectedInd].src;
+    }
+
     goTab();
 }
 
@@ -41,8 +45,9 @@ function deleteTab(index) {
     if (index !== 0) {
         tabs[index].parentNode.removeChild(tabs[index]);
         tabs.splice(index, 1);
-        updateTabs();
         selectTab(0);
+        updateTabs();
+        loadscreenImg.src="";
     }
 }
 
@@ -63,7 +68,9 @@ function updateTabs() {
     });
 
     tabBtns.forEach(function(btn, index) {
-        btn.innerHTML = "Tab: " + index;  
+        btn.innerHTML = "Tab: " + index;
+
+        //btn.innerHTML = "Tab: " + index; // Switch to webpage title 
         if (index === selectedInd) {
             btn.className="tabSelected";
         } else {
