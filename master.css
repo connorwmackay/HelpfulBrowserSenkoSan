@@ -5,6 +5,17 @@ button {
     border-style: none;
 }
 
+.tabBtn {
+    border: 0.1em solid red;
+    width: 6em;
+}
+
+.tabSelected {
+    border: 0.1em solid red;
+    width: 6em;
+    background-color: darkorange;
+}
+
 #searchBar {
     padding: 0.4em;
     height: 2%;

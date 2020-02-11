@@ -24,7 +24,16 @@ function addTab() {
     goHome();
 }
 
+function deleteTab(index) {
+    if (index !== 0) {
+        tabs.splice(index, 1);
+    }
+    updateTabs();
+}
+
 newBtn = newButton();
+delBtn = newButton();
+tabBar.appendChild(delBtn);
 tabBar.appendChild(newBtn);
 
 function selectTab(index) {
@@ -34,6 +43,9 @@ function selectTab(index) {
     });
     tabs[selectedInd].style.display="block";
     updateTabs();
+    if (tabs[selectedInd].src !== "") {
+        goTab();
+    }
 }
 
 function updateTabs() {
@@ -49,18 +61,22 @@ function updateTabs() {
 
     tabBtns.forEach(function(btn, index) {
         btn.innerHTML = "Tab: " + index; // Set innerHTML to webpage title
+        if (index === selectedInd) {
+            btn.className="tabSelected";
+        } else {
+            btn.className="tabBtn";
+        }
         btn.onclick=function(){selectTab(index)};
         tabBar.appendChild(btn);
     });
+    tabBar.removeChild(delBtn);
     tabBar.removeChild(newBtn);
     newBtn.innerHTML = "New";
     newBtn.onclick=function(){addTab()};
+    delBtn.innerHTML = "Del";
+    delBtn.onclick=function(){deleteTab(selectedInd)};
+    tabBar.appendChild(delBtn);
     tabBar.appendChild(newBtn);
-}
-
-function deleteTab(index) {
-    tabs.splice(index, 1);
-    updateTabs(); 
 }
 
 addTab(newWebview());

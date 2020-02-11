@@ -12,6 +12,12 @@ function goHome() {
     bg.style.display="block";    
 }
 
+function goTab() {
+    tabs[selectedInd].style.display="block";
+    box.style.display="none";
+    bg.style.display="none";
+    box.value="";
+}
 
 function fixUrl(url) {
 	const protocolPrefix = "https://";
@@ -72,7 +78,7 @@ box.addEventListener("keyup", function() {
     }
 });
 
-tabs[selectedInd].addEventListener("loadstop", function() {
+tabs[selectedInd].addEventListener("loadstart", function() {
 	if (searchBar.value !== tabs[selectedInd].src) {
 		searchBar.value = tabs[selectedInd].src;
 	}
