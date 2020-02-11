@@ -5,6 +5,17 @@ button {
     border-style: none;
 }
 
+.tabBtn {
+    border: 0.1em solid red;
+    width: 6em;
+}
+
+.tabSelected {
+    border: 0.1em solid red;
+    width: 6em;
+    background-color: darkorange;
+}
+
 #searchBar {
     padding: 0.4em;
     height: 2%;
@@ -31,4 +42,14 @@ button {
     border: 0.2em orange solid;
     padding-left: 0.3em;
     padding-right: 0.3em;
+}
+
+
+
+.tabWebview {
+    display: none;
+    padding-top: 1em;
+    position: absolute;
+    width: 99%;
+    height: 96%;    
 }

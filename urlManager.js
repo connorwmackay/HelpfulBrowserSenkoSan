@@ -5,13 +5,18 @@ let bg = document.getElementById("bg");
 function goHome() {
     searchBar.value = "";
     box.value="";
-    webview.terminate();
-    webview.src="";
-    webview.style.display="none";
+    tabs[selectedInd].terminate();
+    tabs[selectedInd].src="";
+    tabs[selectedInd].style.display="none";
     box.style.display="block";
     bg.style.display="block";    
 }
 
+function goTab() {
+    box.style.display="none";
+    bg.style.display="none";
+    box.value="";
+}
 
 function fixUrl(url) {
 	const protocolPrefix = "https://";
@@ -41,7 +46,7 @@ function fixUrl(url) {
 }
 
 function updateUrl(url) {
-	webview.src = url;
+	tabs[selectedInd].src = url;
 }
 
 searchBar.addEventListener("keyup", function() {
@@ -49,9 +54,9 @@ searchBar.addEventListener("keyup", function() {
 	let returnKey = 13;
 
 	if (keyPressed === returnKey) {
-	    webview.src="";
+	    tabs[selectedInd].src="";
             updateUrl(fixUrl(searchBar.value));	
-            webview.style.display="block";
+            tabs[selectedInd].style.display="block";
             box.style.display="none";
             bg.style.display="none";
             box.value="";    
@@ -63,17 +68,11 @@ box.addEventListener("keyup", function() {
     let returnKey = 13;
 
     if (keyPressed === returnKey) {
-        webview.src="";
+        tabs[selectedInd].src="";
         updateUrl((settings["searchEngine"] + box.value));
-        webview.style.display="block";
+        tabs[selectedInd].style.display="block";
         box.style.display="none";
         bg.style.display="none";
         box.value="";
     }
-});
-
-webview.addEventListener("loadstop", function() {
-	if (searchBar.value !== webview.src) {
-		searchBar.value = webview.src;
-	}
 });
