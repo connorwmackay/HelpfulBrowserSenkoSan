@@ -13,7 +13,6 @@ function goHome() {
 }
 
 function goTab() {
-    tabs[selectedInd].style.display="block";
     box.style.display="none";
     bg.style.display="none";
     box.value="";
@@ -76,10 +75,4 @@ box.addEventListener("keyup", function() {
         bg.style.display="none";
         box.value="";
     }
-});
-
-tabs[selectedInd].addEventListener("loadstart", function() {
-	if (searchBar.value !== tabs[selectedInd].src) {
-		searchBar.value = tabs[selectedInd].src;
-	}
 });

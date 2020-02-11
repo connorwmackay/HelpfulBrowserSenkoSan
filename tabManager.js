@@ -4,6 +4,8 @@ let tabBar = document.getElementById("tabBar");
 const webviewClass = "tabWebview";
 let selectedInd = 0;
 
+let loadscreenImg = document.getElementById("loadImg");
+
 if (selectedInd === undefined) {
     selectedind = 0;
 }
@@ -24,14 +26,6 @@ function addTab() {
     goHome();
 }
 
-function deleteTab(index) {
-    if (index !== 0) {
-        tabs.splice(index, 1);
-    }
-    updateTabs();
-    selectTab(0);
-}
-
 newBtn = newButton();
 delBtn = newButton();
 tabBar.appendChild(delBtn);
@@ -39,13 +33,16 @@ tabBar.appendChild(newBtn);
 
 function selectTab(index) {
     selectedInd = index;
-    tabs.forEach(function(tab, index) {
-        tab.style.display="none";
-    });
-    tabs[selectedInd].style.display="block";
     updateTabs();
-    if (tabs[selectedInd].src !== "") {
-        goTab();
+    goTab();
+}
+
+function deleteTab(index) {
+    if (index !== 0) {
+        tabs[index].parentNode.removeChild(tabs[index]);
+        tabs.splice(index, 1);
+        updateTabs();
+        selectTab(0);
     }
 }
 
@@ -58,6 +55,11 @@ function updateTabs() {
     tabs.forEach(function(tab, index) {
         tab.className=webviewClass;
         tabBtns.push(newButton());
+        tab.style.display="none";
+        if (index === selectedInd) {
+            tab.style.display="block";
+        }
+        
     });
 
     tabBtns.forEach(function(btn, index) {
@@ -78,6 +80,20 @@ function updateTabs() {
     delBtn.onclick=function(){deleteTab(selectedInd)};
     tabBar.appendChild(delBtn);
     tabBar.appendChild(newBtn);
+    
+    tabs[selectedInd].addEventListener("loadstart", function() {
+        loadscreenImg.src="images/senkoLoading.gif";
+    });
+
+    tabs[selectedInd].addEventListener("loadstop", function() {
+        loadscreenImg.src="";
+    });
+    
+    tabs[selectedInd].addEventListener("loadstop", function() {
+          if (searchBar.value !== tabs[selectedInd].src) {
+                  searchBar.value = tabs[selectedInd].src;
+          }
+    });
 }
 
 addTab(newWebview());
