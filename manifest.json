@@ -12,6 +12,5 @@
             "scripts": ["browser.js"]
         }
     },
-    "content_security_policy": "script-src 'self' https: object-src 'self'",
     "icons":{"128":"images/senko.png"}
 }

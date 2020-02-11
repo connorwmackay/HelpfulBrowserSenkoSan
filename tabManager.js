@@ -37,8 +37,11 @@ function selectTab(index) {
     if (searchBar.value !== tabs[selectedInd].src) {
         searchBar.value = tabs[selectedInd].src;
     }
-
-    goTab();
+    if (tabs[index].src == "") {
+        goHome();
+    } else {
+        goTab();
+    }
 }
 
 function deleteTab(index) {
